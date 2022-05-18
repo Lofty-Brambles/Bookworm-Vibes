@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Book-sauce!</title>
+	<link rel="stylesheet" href="./styles/style.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<script src="./app.js" defer></script>
+</head>
+<body>
+	<header>
+		<div class="top">
+			<div class="logo">
+				<div><span class="material-icons md-48">local_library</span></div>
+				<div>Book-sauce!</div>
+			</div>
+			<div class="info">
+				<span class="material-icons img-link md-48">settings</span>
+				<span class="material-icons img-link md-48">image</span>
+				<span class="material-icons img-link md-48">flag</span>
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="info">
+				<div class="stat">Total Books</div>
+				<div class="num" id="total-books">0</div>
+			</div>
+			<div class="info">
+				<div class="stat">Authors</div>
+				<div class="num" id="total-authors">0</div>
+			</div>
+			<div class="info">
+				<div class="stat">Total Pages</div>
+				<div class="num" id="total-pages">0</div>
+			</div>
+			<div class="info">
+				<div class="stat">Read Books</div>
+				<div class="num" id="total-read">0</div>
+			</div>
+			<div class="info">
+				<div class="stat">Unread Books</div>
+				<div class="num" id="total-unread">0</div>
+			</div>
+		</div>
+	</header>
+	<main>
+		<div class="card">
+			<div class="bar">
+				<div class="buttons">
+					<div class="edit"><span class="material-icons md-48">edit</span></div>
+					<div class="remove"><span class="material-icons md-48">delete</span></div>
+				</div>
+				<div class="border-right"></div>
+				<div class="border-left"></div>
+			</div>
+			<div class="content">
+				<div class="book">
+					<div class="title">Enclave</div>
+					<div class="author">Ann Aguirre</div>
+				</div>
+				<div class="paging">Pages: <span class="pages">325</span></div>
+				<button class="read">Read</div>
+			</div>
+		</div>
+		<div class="add-card card"><span class="add-btn">➕</span></div>
+	</main>
+	<footer>
+		Created by Lofty Brambles <wbr>|<wbr> For The Odin Project <wbr>|<wbr>  
+		License GNU GPL <span class="rotate180"> © </span> <span class="date"></span>
+	</footer>
+</body>
+</html>

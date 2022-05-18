@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100&family=Titan+One&display=swap');
+
+$set1-lighter: #feffcc;
+$set1-light: #a2d4ab;
+$set1-medium: #3eaca8;
+$set1-dark: #547a82;
+$set1-darker: #5a5050;
+
+$set2-lighter: #aba7ab;
+$set2-light: #cc527a;
+$set2-medium: #eb175d;
+$set2-dark: #474747;
+$set2-darker: #363636;
+
+$set3-lighter: #ee4540;
+$set3-light: #c72c41;
+$set3-medium: #801336;
+$set3-dark: #510a32;
+$set3-darker: #2d142c;
+
+$act-lighter: $set1-lighter;
+$act-light: $set1-light;
+$act-medium: $set1-medium;
+$act-dark: $set1-dark;
+$act-darker: $set1-darker;
+
+$repel-light: #f1f5f9;
+$repel-dark: #000;
+
+$sans: "Fira Sans", Helvetica, Arial, sans-serif;
+$titan: "Titan One", cursive;
+
+$vw: calc( 100vw - ( 100vw - 100% ) );
+
+.md-48 {
+	font-size: 48px;
+}
+
+.iconside {
+	height: 24px;
+	width: 24px;
+}
+
+@mixin flex( $dir: row, $just-cont: center, $alg-it: center, $wrp: nowrap ) {
+	display: flex;
+	flex-flow: $dir $wrp;
+	justify-content: $just-cont;
+	align-items: $alg-it;
+}
+
+@mixin box($width, $height: $width) {
+	width: $width;
+	height: $height;
+}
+
+@mixin circle {
+	border-radius: 100%;
+}
+
+@mixin font-size($size) {
+	font-size: $size;
+	font-size: calc($size / 16px) * 1rem;
+}
+
+@mixin opacity($opacity) {
+	opacity: $opacity;
+	$opacity-ie: $opacity * 100;
+	filter: alpha(opacity = $opacity-ie);
+}
+
+@mixin shadow($col: #fff) {
+	text-shadow: 1px 1px 0px $col,
+	-1px 1px 0px $col,
+	1px -1px 0px $col,
+	-1px -1px 0px $col;
+}
+
+@mixin gradient($start-color, $end-color, $orientation) {
+
+	background: $start-color;
+
+	@if $orientation == 'vertical' {
+
+		background: -webkit-linear-gradient(top, $start-color, $end-color);
+		background: linear-gradient(to bottom, $start-color, $end-color);
+
+	} @else if $orientation == 'horizontal' {
+
+	  background: -webkit-linear-gradient(left, $start-color, $end-color);
+	  background: linear-gradient(to right, $start-color, $end-color);
+
+	} @else {
+
+	  background: -webkit-radial-gradient(center, ellipse cover, $start-color, $end-color);
+	  background: radial-gradient(ellipse at center, $start-color, $end-color);
+
+	}
+}
