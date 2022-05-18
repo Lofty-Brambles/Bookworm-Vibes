@@ -68,7 +68,8 @@ header {
 }
 
 main {
-	padding: 5rem;
+	padding: 2rem;
+	width: add.$vw;
 	display: grid;
 	grid-template-columns: repeat( auto-fit, minmax( 250px, 20vw ) );
 }
