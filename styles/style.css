@@ -390,6 +390,10 @@ header {
   font-size: 24px;
   font-size: 1.5rem;
   font-weight: 600;
+  transition: letter-spacing ease-in-out 1s;
+}
+.top .logo:hover {
+  letter-spacing: 0.5rem;
 }
 .top .logo div {
   display: flex;
@@ -438,10 +442,12 @@ header {
 }
 
 main {
-  padding: 2rem;
+  box-sizing: border-box;
+  padding: 4rem;
   width: calc(100vw - (100vw - 100%));
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 20vw));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 20vw));
+  gap: 3rem;
 }
 
 .card {
@@ -452,8 +458,8 @@ main {
   align-items: center;
   width: fit-content;
   padding: 0px 1rem;
-  box-shadow: 0 0 10px #000;
-  border-bottom: 4px solid #5a5050;
+  box-shadow: 0 0 20px 10px #000;
+  border-bottom: 5px solid #5a5050;
   border-radius: 10%;
 }
 
@@ -483,6 +489,26 @@ main {
   border-right: 1px solid #000;
 }
 
+.edit, .remove {
+  transition: transform ease-in-out 0.3s;
+}
+.edit:hover, .remove:hover {
+  transform: scale(1.2);
+}
+
+.add-card {
+  width: calc(100% - 2rem);
+  cursor: pointer;
+}
+.add-card .add-btn {
+  font-size: 50px;
+  font-size: 3.125rem;
+  transition: transform ease-in-out 0.7s;
+}
+.add-card .add-btn:hover {
+  transform: rotate(180deg) scale(1.5);
+}
+
 .content {
   display: flex;
   flex-flow: column nowrap;
@@ -507,6 +533,40 @@ main {
   font-family: "Fira Sans", Helvetica, Arial, sans-serif;
   color: #f1f5f9;
   font-weight: 700;
+}
+.content .paging {
+  font-family: "Titan One", cursive;
+}
+.content button {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+  padding: 0.5rem 0rem;
+  border: 0 solid #f1f5f9;
+  min-width: 75px;
+  max-width: 100px;
+  line-height: 1rem;
+  background-color: #547a82;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  transform: rotate(-2deg);
+  user-select: none;
+}
+.content button:focus {
+  outline: 0;
+}
+.content button::after {
+  content: "";
+  position: absolute;
+  border: 1px solid #000;
+  bottom: 4px;
+  left: 4px;
+  width: calc(100% - 1px);
+  height: calc(100% - 1px);
 }
 
 footer {
