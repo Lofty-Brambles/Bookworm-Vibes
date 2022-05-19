@@ -409,6 +409,65 @@ header {
   gap: 2rem;
 }
 
+#image {
+  position: relative;
+  display: inline-block;
+}
+#image:hover ul {
+  display: block;
+}
+#image span {
+  position: relative;
+}
+#image ul {
+  display: none;
+  z-index: 1;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  right: 0;
+}
+#image ul li {
+  display: block;
+  padding: 0.75rem 1rem;
+  opacity: 0;
+  background-color: #feffcc;
+  color: #000;
+  font-family: "Titan One", cursive;
+  white-space: nowrap;
+}
+#image ul li:hover {
+  background-color: #a2d4ab;
+}
+#image ul li.active {
+  background-color: #3eaca8;
+}
+#image ul .drop-item-1 {
+  animation: scale 0.3s ease-in-out calc( 1 * 0.1s ) forwards;
+  transform-origin: top center;
+}
+#image ul .drop-item-2 {
+  animation: scale 0.3s ease-in-out calc( 2 * 0.1s ) forwards;
+  transform-origin: top center;
+}
+#image ul .drop-item-3 {
+  animation: scale 0.3s ease-in-out calc( 3 * 0.1s ) forwards;
+  transform-origin: top center;
+}
+@keyframes scale {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .bottom {
   display: flex;
   flex-flow: row nowrap;
@@ -567,6 +626,10 @@ main {
   left: 4px;
   width: calc(100% - 1px);
   height: calc(100% - 1px);
+}
+.content button:hover::after {
+  bottom: 2px;
+  left: 2px;
 }
 
 footer {

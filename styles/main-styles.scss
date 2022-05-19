@@ -46,6 +46,71 @@ header {
 	}
 }
 
+#image {
+	position: relative;
+	display: inline-block;
+
+	&:hover ul {
+		display: block;
+	}
+
+	& span {
+		position: relative;
+	}
+
+	& ul {
+		display: none;
+		z-index: 1;
+		position: absolute;
+
+		padding: 0;
+		margin: 0;
+		right: 0;
+
+		& li {
+			display: block;
+			padding: 0.75rem 1rem;
+			opacity: 0;
+
+			background-color: add.$act-lighter;
+			color: add.$repel-dark;
+			font-family: add.$titan;
+			white-space: nowrap;
+
+			&:hover {
+				background-color: add.$act-light;
+			}
+
+			&.active {
+				background-color: add.$act-medium;
+			}
+		}
+
+		@for $i from 1 to 4 {
+			.drop-item-#{$i} {
+				animation: scale 0.3s ease-in-out calc( #{$i} * 0.1s ) forwards;
+				transform-origin: top center;
+			}
+		}
+
+		@keyframes scale {
+
+			0% {
+				opacity: 0;
+				transform: scale(0);
+			}
+			80% {
+				transform: scale(1.1);
+			}
+			100% {
+				opacity: 1;
+				transform: scale(1);
+			}
+
+		}
+	}
+}
+
 .bottom {
 	@include add.flex( row, space-evenly );
 	font-family: add.$sans;
