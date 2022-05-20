@@ -16,16 +16,32 @@ const colorbtns = document.querySelectorAll( "#image > ul li" );
 colorbtns.forEach( btn => {
 	btn.addEventListener( "click", e => {
 
-		e.currentTarget.className += " active";
-		console.log("btn activated");
-
 		colorbtns.forEach( btnd => {
 			btnd.className = btnd.className
 				.replace( " active", "" );
-			console.log("btn deactivated");
+		} );
+		
+		const num = e.currentTarget.className.slice(-1);
+		const changes = [ "lighter", "light", "medium",
+			"dark", "darker", "medmix", "darmix" ];
+		changes.forEach( ele => {
+			document.querySelector( ":root" ).style
+				.setProperty( `--act-${ ele }`,
+					 `var( --set${ num }-${ ele } )` );
 		} );
 
+		e.currentTarget.className += " active";
 	} );
+} );
+window.onload = 
+	document.querySelector( ".drop-item-1" ).click();
+
+// Adding sidebar for input
+
+const addcard = document.querySelector( ".add-card" );
+const inputbar = document.querySelector( ".inputbar" );
+addcard.addEventListener( "click", () => {
+	inputbar.style.width = "40vw";
 } );
 
 // Book arrays and interchange

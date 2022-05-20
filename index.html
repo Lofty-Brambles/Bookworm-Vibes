@@ -10,72 +10,77 @@
 	<script src="./app.js" defer></script>
 </head>
 <body>
-	<header>
-		<div class="top">
-			<div class="logo">
-				<div><span class="material-icons md-48">local_library</span></div>
-				<div>Book-sauce!</div>
-			</div>
-			<div class="info">
-				<span class="material-icons img-link md-48" id="settings">settings</span>
-				<span id="image">
-					<span class="material-icons img-link md-48">image</span>
-					<ul>
-						<li class="drop-item-1">Colours 1</li>
-						<li class="drop-item-2">Colours 2</li>
-						<li class="drop-item-3">Colours 3</li>
-					</ul>
-				</span>
-				<span class="material-icons img-link md-48">flag</span>
-			</div>
-		</div>
-		<div class="bottom">
-			<div class="info">
-				<div class="stat">Total Books</div>
-				<div class="num" id="total-books">0</div>
-			</div>
-			<div class="info">
-				<div class="stat">Authors</div>
-				<div class="num" id="total-authors">0</div>
-			</div>
-			<div class="info">
-				<div class="stat">Total Pages</div>
-				<div class="num" id="total-pages">0</div>
-			</div>
-			<div class="info">
-				<div class="stat">Read Books</div>
-				<div class="num" id="total-read">0</div>
-			</div>
-			<div class="info">
-				<div class="stat">Unread Books</div>
-				<div class="num" id="total-unread">0</div>
-			</div>
-		</div>
-	</header>
-	<main>
-		<div class="card">
-			<div class="bar">
-				<div class="buttons">
-					<div class="edit"><span class="material-icons md-48">edit</span></div>
-					<div class="remove"><span class="material-icons md-48">delete</span></div>
+	<div class="main">
+		<header>
+			<div class="top">
+				<div class="logo">
+					<div><span class="material-icons md-48">local_library</span></div>
+					<div>Book-sauce!</div>
 				</div>
-				<div class="border-right"></div>
-				<div class="border-left"></div>
-			</div>
-			<div class="content">
-				<div class="book">
-					<div class="title">Enclave</div>
-					<div class="author">Ann Aguirre</div>
+				<div class="info">
+					<span class="material-icons img-link md-48" id="settings">settings</span>
+					<span id="image">
+						<span class="material-icons img-link md-48">image</span>
+						<ul>
+							<li class="drop-item-1">Colours 1</li>
+							<li class="drop-item-2">Colours 2</li>
+							<li class="drop-item-3">Colours 3</li>
+						</ul>
+					</span>
+					<a href=""><span class="material-icons img-link md-48">flag</span></a>
 				</div>
-				<div class="paging">Pages: <span class="pages">325</span></div>
-				<button class="read">Read</div>
 			</div>
-		</div>
-		<div class="add-card card"><div class="add-btn">➕</div></div>
-	</main>
-	<footer>
-		Created by Lofty Brambles <wbr>|<wbr> For The Odin Project <wbr>|<wbr>  
-		License GNU GPL <span class="rotate180"> © </span> <span class="date"></span>
-	</footer>
+			<div class="bottom">
+				<div class="info">
+					<div class="stat">Total Books</div>
+					<div class="num" id="total-books">0</div>
+				</div>
+				<div class="info">
+					<div class="stat">Authors</div>
+					<div class="num" id="total-authors">0</div>
+				</div>
+				<div class="info">
+					<div class="stat">Total Pages</div>
+					<div class="num" id="total-pages">0</div>
+				</div>
+				<div class="info">
+					<div class="stat">Read Books</div>
+					<div class="num" id="total-read">0</div>
+				</div>
+				<div class="info">
+					<div class="stat">Unread Books</div>
+					<div class="num" id="total-unread">0</div>
+				</div>
+				<div class="info add-card"><div class="add-btn">➕</div></div>
+			</div>
+		</header>
+		<main>
+			<div class="card">
+				<div class="bar">
+					<div class="buttons">
+						<div class="edit"><span class="material-icons md-48">edit</span></div>
+						<div class="remove"><span class="material-icons md-48">delete</span></div>
+					</div>
+					<div class="border-right"></div>
+					<div class="border-left"></div>
+				</div>
+				<div class="content">
+					<div class="book">
+						<div class="title">Enclave</div>
+						<div class="author">Ann Aguirre</div>
+					</div>
+					<div class="paging">Pages: <span class="pages">325</span></div>
+					<button class="read">Not Read</button>
+				</div>
+			</div>
+		</main>
+		<footer>
+			Created by Lofty Brambles <wbr>|<wbr> For The Odin Project <wbr>|<wbr>
+			License GNU GPL <span class="rotate180"> © </span> <span class="date"></span>
+		</footer>
+	</div>
+	<div class="inputbar">
+		some demo content
+	</div>
 </body>
 </html>
