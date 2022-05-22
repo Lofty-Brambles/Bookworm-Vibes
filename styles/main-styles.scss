@@ -36,23 +36,81 @@
 }
 
 .main {
-	@include add.gradient( var( --act-medium ), var( --act-medmix ), horizontal );
+	background-image: url(./../assets/background.webp);
+	background-size: cover;
 	@include add.flex( column, space-between );
 	width: add.$vw;
+	min-width: 380px;
+	
+	@media ( width: 380px ) {
+		overflow-x: scroll;
+	}
 }
 
 .inputbar {
+	box-sizing: border-box;
 	height: 100vh;
 	width: 0;
+	@include add.flex( row, flex-start );
+
 	position: fixed;
 	z-index: 1;
-
 	top: 0;
 	right: 0;
 
 	overflow: hidden;
 	transition: 0.5s;
-	background-color: #fff;
+	@include add.gradient( var( --act-medium ), var( --act-medmix ), horizontal );
+	border-radius: 5rem 0rem 0rem 5rem;
+
+	& .i-body {
+		box-sizing: border-box;
+		width: 100%;
+		margin: 3rem;
+	
+		@include add.flex( column );
+		padding: 1rem;
+		gap: 1rem;
+	
+		border: 0.25rem solid add.$repel-dark;
+		border-radius: 1rem;
+		font-family: add.$titan;
+	
+		& legend {
+			@include add.font-size( 16px );
+			font-weight: 400;
+		}
+	}
+}
+
+.i-form {
+	@include add.flex( column );
+}
+
+.button-box {
+	@include add.flex();
+	gap: 1rem;
+
+	& .button {
+		padding: 0.8rem;
+		border-radius: 0.4rem;
+		border: none;
+		cursor: pointer;
+		transition: transform ease-in-out 0.4s, box-shadow ease-in-out 0.4s;
+
+		&:hover {
+			transform: scale(1.1);
+			box-shadow: 0 0 5px add.$repel-dark
+		}
+
+		&.add {
+			background-color: #f00;
+		}
+
+		&.cancel {
+			background-color: #444;
+		}
+	}
 }
 
 header {
@@ -60,6 +118,7 @@ header {
 	@include add.flex( column );
 	box-sizing: border-box;
 	width: add.$vw;
+	border-bottom: 0.25rem solid add.$repel-dark;
 }
 
 .top {
@@ -71,6 +130,7 @@ header {
 	& .logo {
 		@include add.flex();
 		gap: 0.5rem;
+		margin-right: 1rem;
 
 		font-family: add.$titan;
 		@include add.font-size( 24px );
@@ -163,7 +223,7 @@ header {
 	grid-template-columns: repeat( 6, 1fr );
 	font-family: add.$sans;
 	color: add.$repel-dark;
-	font-weight: 800;
+	font-weight: 900;
 
 	box-sizing: border-box;
 	width: add.$vw;
@@ -331,6 +391,7 @@ footer {
 	@include add.gradient( var( --act-dark ),  var( --act-darmix ), horizontal );
 	@include add.flex();
 	font-family: add.$titan;
+	border-top: 0.25rem solid add.$repel-dark;
 
 	box-sizing: border-box;
 	width: add.$vw;

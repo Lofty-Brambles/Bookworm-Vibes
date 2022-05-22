@@ -39,9 +39,11 @@ window.onload =
 // Adding sidebar for input
 
 const addcard = document.querySelector( ".add-card" );
+const main = document.querySelector( ".main" );
 const inputbar = document.querySelector( ".inputbar" );
 addcard.addEventListener( "click", () => {
 	inputbar.style.width = "40vw";
+	main.style.filter = "blur(5px)";
 } );
 
 // Book arrays and interchange

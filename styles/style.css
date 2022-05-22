@@ -374,26 +374,90 @@ template {
 }
 
 .main {
-  background: var(--act-medium);
-  background: -webkit-linear-gradient(left, var(--act-medium), var(--act-medmix));
-  background: linear-gradient(to right, var(--act-medium), var(--act-medmix));
+  background-image: url(./../assets/background.webp);
+  background-size: cover;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
   align-items: center;
   width: calc(100vw - (100vw - 100%));
+  min-width: 380px;
+}
+@media (width: 380px) {
+  .main {
+    overflow-x: scroll;
+  }
 }
 
 .inputbar {
+  box-sizing: border-box;
   height: 100vh;
   width: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
   position: fixed;
   z-index: 1;
   top: 0;
   right: 0;
   overflow: hidden;
   transition: 0.5s;
-  background-color: #fff;
+  background: var(--act-medium);
+  background: -webkit-linear-gradient(left, var(--act-medium), var(--act-medmix));
+  background: linear-gradient(to right, var(--act-medium), var(--act-medmix));
+  border-radius: 5rem 0rem 0rem 5rem;
+}
+.inputbar .i-body {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 3rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+  border: 0.25rem solid #000;
+  border-radius: 1rem;
+  font-family: "Titan One", cursive;
+}
+.inputbar .i-body legend {
+  font-size: 16px;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.i-form {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-box {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.button-box .button {
+  padding: 0.8rem;
+  border-radius: 0.4rem;
+  border: none;
+  cursor: pointer;
+  transition: transform ease-in-out 0.4s, box-shadow ease-in-out 0.4s;
+}
+.button-box .button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 5px #000;
+}
+.button-box .button.add {
+  background-color: #f00;
+}
+.button-box .button.cancel {
+  background-color: #444;
 }
 
 header {
@@ -406,6 +470,7 @@ header {
   align-items: center;
   box-sizing: border-box;
   width: calc(100vw - (100vw - 100%));
+  border-bottom: 0.25rem solid #000;
 }
 
 .top {
@@ -423,6 +488,7 @@ header {
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+  margin-right: 1rem;
   font-family: "Titan One", cursive;
   font-size: 24px;
   font-size: 1.5rem;
@@ -510,7 +576,7 @@ header {
   grid-template-columns: repeat(6, 1fr);
   font-family: "Fira Sans", Helvetica, Arial, sans-serif;
   color: #000;
-  font-weight: 800;
+  font-weight: 900;
   box-sizing: border-box;
   width: calc(100vw - (100vw - 100%));
   padding: 1rem 5vw;
@@ -681,6 +747,7 @@ footer {
   justify-content: center;
   align-items: center;
   font-family: "Titan One", cursive;
+  border-top: 0.25rem solid #000;
   box-sizing: border-box;
   width: calc(100vw - (100vw - 100%));
   padding: 1rem;
