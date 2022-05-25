@@ -87,23 +87,27 @@
 				<div class="i-form">
 					<div class="wrap">
 						<label for="Title">Title<span class="red">*</span></label>
-						<input type="text" id="Title">
+						<input type="text" id="title">
+						<p class="title-error">❌ <span class="red">Needs</span> a proper title!</p>
 					</div>
 					<div class="wrap">
 						<label for="Author">Author<span class="red">*</span></label>
-						<input type="text" id="Author">
+						<input type="text" id="author">
+						<p class="author-error">❌ <span class="red">Needs</span> a proper name!</p>
 					</div>
 					<div class="wrap">
 						<label for="Nopag">Number of pages<span class="red">*</span></label>
-						<input type="number" min="1" id="Nopag">
+						<input type="number" id="nopag">
+						<p class="pag-error">❌ Must be a <span class="red">natural</span> number!</p>
 					</div>
 					<div class="check">
-						Have you read the book? <input type="checkbox" id="readn">
+						<input type="checkbox" id="readon"> Have you read the book?
 					</div>
 				</div>
 				<div class="button-box">
-					<input type="submit" class="i-button button add">
-					<button class="i-button button cancel">❌ Cancel</button>
+					<button type="button" class="i-button button add">➕</button>
+					<button type="button" class="i-button button cancel">❌</button>
+					<button type="reset" class="i-button button reset">🔄</button>
 				</div>
 			</fieldset>
 		</form>

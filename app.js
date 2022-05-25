@@ -36,7 +36,18 @@ colorbtns.forEach( btn => {
 window.onload = 
 	document.querySelector( ".drop-item-1" ).click();
 
-// Adding sidebar for input
+// Adding hover animation for add-book button
+
+const addbutt = document.querySelector( ".add-card" );
+const plusSymbol = document.querySelector( ".add-btn" );
+addbutt.addEventListener( "mouseover", () => {
+	plusSymbol.classList.add( "hover" );
+} );
+addbutt.addEventListener( "mouseout", () => {
+	plusSymbol.classList.remove( "hover" );
+} );
+
+// Adding/removing sidebar for input
 
 const addcard = document.querySelector( ".add-card" );
 const main = document.querySelector( ".main" );
@@ -46,15 +57,85 @@ addcard.addEventListener( "click", () => {
 	main.style.filter = "blur(5px)";
 } );
 
-// Book arrays and interchange
+// Manages focus animations on input fields
 
-function Book( name, auth, pages, read ) {
+const allInputs = document.querySelectorAll( "input" );
+allInputs.forEach( input => {
+	input.addEventListener( "focusin", e => {
+		e.currentTarget.parentNode
+			.querySelector( "label" ).classList
+			.add( "active" );
+	} );
+	input.addEventListener( "focusout", e => {
+		const ele = e.currentTarget;
+		if ( !ele.value ) {
+			ele.parentNode.querySelector( "label" )
+				.classList.remove( "active" );
+		};
+	} );
+} );
 
-	this.name = name;
-	this.author = auth;
-	this.totalPages = pages;
-	this.read = read;
+// Form field validations
 
-}
+const title = document.querySelector( "#title" );
+const auth = document.querySelector( "#author" );
+const pages = document.querySelector( "#nopag" );
+const read = document.querySelector( "#readon" ).checked;
 
-const book = new Book("jej");
+const titleErr = document.querySelector( ".title-error" );
+const authErr = document.querySelector( ".author-error" );
+const pagErr = document.querySelector( ".pag-error" );
+
+title.addEventListener( "focusout", () => {
+	if ( title.value.trim() === "" ) {
+		titleErr.style.display = "block";
+	}
+} );
+title.addEventListener( "focusin", () => {
+	titleErr.style.display = "none";
+} );
+
+auth.addEventListener( "focusout", () => {
+	if ( auth.value.trim() === "" ) {
+		authErr.style.display = "block";
+	}
+} );
+auth.addEventListener( "focusin", () => {
+	authErr.style.display = "none";
+} );
+
+pages.addEventListener( "focusout", () => {
+	if ( !(/^[1-9][0-9]*$/).test( pages.value.trim() ) ) {
+		pagErr.style.display = "block";
+	}
+} );
+pages.addEventListener( "focusin", () => {
+	pagErr.style.display = "none";
+} );
+
+// Cancel and reset button functionality
+
+const cancelBtn = document.querySelector( ".cancel" );
+cancelBtn.addEventListener( "click", () => {
+	inputbar.style.width = "0";
+	main.style.filter = null;
+} );
+const reset = document.querySelector( ".reset" );
+reset.addEventListener( "click", () => {
+	document.querySelectorAll( "label" ).forEach( lab => {
+		lab.classList.remove( "active" );
+	} );
+} );
+
+// Add button functionality
+
+const add = document.querySelector( ".add" );
+add.addEventListener( "click", () => {
+	if (
+		( title.value.trim() !== "" ) &&
+		( auth.value.trim() !== "" ) &&
+		( (/^[1-9][0-9]*$/).test( pages.value.trim() ) )
+	) {
+		console.log("works");
+	}
+} );

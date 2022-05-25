@@ -7,13 +7,11 @@
 	--act-medium: var( --set1-medium );
 	--act-dark: var( --set1-dark );
 	--act-darker: var( --set1-darker );
-	--act-medmix: var( --set1-medmix );
 	--act-darmix: var( --set1-darmix );
 
 	--set1-lighter: #feffcc;
 	--set1-light: #a2d4ab;
 	--set1-medium: #3eaca8;
-	--set1-medmix: #85d3d0;
 	--set1-dark: #547a82;
 	--set1-darmix: #93b3b9;
 	--set1-darker: #5a5050;
@@ -21,7 +19,6 @@
 	--set2-lighter: #aba7ab;
 	--set2-light: #cc527a;
 	--set2-medium: #eb175d;
-	--set2-medmix: #f3749e;
 	--set2-dark: #474747;
 	--set2-darmix: #919191;
 	--set2-darker: #363636;
@@ -29,7 +26,6 @@
 	--set3-lighter: #ee4540;
 	--set3-light: #c72c41;
 	--set3-medium: #801336;
-	--set3-medmix: #ec81a3;
 	--set3-dark: #510a32;
 	--set3-darmix: #e31f8e;
 	--set3-darker: #2d142c;
@@ -51,7 +47,7 @@
 	box-sizing: border-box;
 	height: 100vh;
 	width: 0;
-	@include add.flex( row, flex-start );
+	@include add.flex( row, space-evenly );
 
 	position: fixed;
 	z-index: 1;
@@ -60,13 +56,12 @@
 
 	overflow: hidden;
 	transition: 0.5s;
-	@include add.gradient( var( --act-medium ), var( --act-medmix ), horizontal );
+	background-color: var( --act-medium );
 	border-radius: 5rem 0rem 0rem 5rem;
 
 	& .i-body {
 		box-sizing: border-box;
 		width: 100%;
-		margin: 3rem;
 	
 		@include add.flex( column );
 		padding: 1rem;
@@ -85,6 +80,51 @@
 
 .i-form {
 	@include add.flex( column );
+
+	& .wrap, .check {
+		position: relative;
+		margin: 0.45rem 0rem;
+		font-family: add.$sans;
+
+		& label {
+			position: absolute;
+			top: 0;
+			margin: 0.25rem;
+			padding: 0.25rem;
+
+			font-size: 1rem;
+			background-color: var( --act-medium );
+			transition: top 0.2s ease-in-out, font-size 0.2s ease-in-out;
+
+			&.active {
+				top: -1rem;
+				font-size: 0.8rem;
+			}
+		}
+
+		& input {
+			padding: 0.5rem;
+
+			border: 2px solid add.$repel-light;
+			border-radius: 0.5rem;
+			font-size: 1rem;
+			background-color: var( --act-medium );
+			color: add.$repel-light;
+
+			&:focus {
+				outline: none;
+			}
+		}
+
+		& p {
+			display: none;
+			margin: 3px 0px 0px 0px;
+
+			font-family: add.$sans;
+			font-size: 0.75rem;
+			color: rgba( add.$repel-dark, 0.8 );
+		}
+	}
 }
 
 .button-box {
@@ -109,6 +149,10 @@
 
 		&.cancel {
 			background-color: #444;
+		}
+
+		&.reset {
+			background-color: #44f;
 		}
 	}
 }
@@ -223,7 +267,7 @@ header {
 	grid-template-columns: repeat( 6, 1fr );
 	font-family: add.$sans;
 	color: add.$repel-dark;
-	font-weight: 900;
+	font-weight: 500;
 
 	box-sizing: border-box;
 	width: add.$vw;
@@ -238,6 +282,7 @@ header {
 		@include add.flex( column, space-evenly );
 		padding: 1rem;
 		gap: 0.4rem;
+		@include add.font-size( 15px );
 
 		background-color: var( --act-darker );
 		border-radius: 10%;
@@ -315,7 +360,7 @@ main {
 		@include add.font-size( 32px );
 		transition: transform ease-in-out 0.7s;
 
-		&:hover {
+		&.hover {
 			transform: rotate(180deg) scale(1.5);
 		}
 	}
@@ -408,4 +453,8 @@ footer {
 	&:hover {
 		transform: scale(1.2);
 	}
+}
+
+.red {
+	color: #f00;
 }
