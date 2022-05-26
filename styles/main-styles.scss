@@ -35,7 +35,7 @@
 	background-image: url(./../assets/background.webp);
 	background-size: cover;
 	@include add.flex( column, space-between );
-	height: 100vh;
+	min-height: 100vh;
 	width: add.$vw;
 	min-width: 380px;
 	

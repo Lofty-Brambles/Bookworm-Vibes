@@ -376,7 +376,7 @@ template {
   flex-flow: column nowrap;
   justify-content: space-between;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   width: calc(100vw - (100vw - 100%));
   min-width: 380px;
 }
