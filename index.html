@@ -58,7 +58,6 @@
 			<div class="card">
 				<div class="bar">
 					<div class="buttons">
-						<div class="edit"><span class="material-icons md-48">edit</span></div>
 						<div class="remove"><span class="material-icons md-48">delete</span></div>
 					</div>
 					<div class="border-right"></div>
@@ -82,22 +81,23 @@
 	<div class="inputbar">
 		<div class="material-icons md-48">label_important</div>
 		<form>
+			<div class="warn"><span class="red">⚠ This book already exists!</span></div>
 			<fieldset class="i-body">
 				<legend>📚 | Add a book!</legend>
 				<div class="i-form">
 					<div class="wrap">
 						<label for="Title">Title<span class="red">*</span></label>
-						<input type="text" id="title">
+						<input type="text" id="title" class="input">
 						<p class="title-error">❌ <span class="red">Needs</span> a proper title!</p>
 					</div>
 					<div class="wrap">
 						<label for="Author">Author<span class="red">*</span></label>
-						<input type="text" id="author">
+						<input type="text" id="author" class="input">
 						<p class="author-error">❌ <span class="red">Needs</span> a proper name!</p>
 					</div>
 					<div class="wrap">
 						<label for="Nopag">Number of pages<span class="red">*</span></label>
-						<input type="number" id="nopag">
+						<input type="number" id="nopag" class="input">
 						<p class="pag-error">❌ Must be a <span class="red">natural</span> number!</p>
 					</div>
 					<div class="check">

@@ -76,6 +76,20 @@
 			font-weight: 400;
 		}
 	}
+
+	& form {
+		@include add.flex( column );
+
+		& .warn {
+			font-family: add.$titan;
+			@include add.font-size( 16px );
+			display: none;
+
+			margin: 5px;
+			border: 3px dashed var( --act-darker );
+			padding: 5px;
+		}
+	}
 }
 
 .i-form {
@@ -107,7 +121,7 @@
 
 			border: 2px solid add.$repel-light;
 			border-radius: 0.5rem;
-			font-size: 1rem;
+			@include add.font-size( 16px );
 			background-color: var( --act-medium );
 			color: add.$repel-light;
 
@@ -121,7 +135,7 @@
 			margin: 3px 0px 0px 0px;
 
 			font-family: add.$sans;
-			font-size: 0.75rem;
+			@include add.font-size( 12px );
 			color: rgba( add.$repel-dark, 0.8 );
 		}
 	}
@@ -402,7 +416,6 @@ main {
 		max-width: 150px;
 		line-height: 1rem;
 	
-		background-color: var( --act-dark );
 		color: add.$repel-dark;
 		font-family: add.$titan;
 		text-decoration: none;

@@ -59,7 +59,7 @@ addcard.addEventListener( "click", () => {
 
 // Manages focus animations on input fields
 
-const allInputs = document.querySelectorAll( "input" );
+const allInputs = document.querySelectorAll( ".input" );
 allInputs.forEach( input => {
 	input.addEventListener( "focusin", e => {
 		e.currentTarget.parentNode
@@ -80,7 +80,7 @@ allInputs.forEach( input => {
 const title = document.querySelector( "#title" );
 const auth = document.querySelector( "#author" );
 const pages = document.querySelector( "#nopag" );
-const read = document.querySelector( "#readon" ).checked;
+const read = document.querySelector( "#readon" );
 
 const titleErr = document.querySelector( ".title-error" );
 const authErr = document.querySelector( ".author-error" );
@@ -93,7 +93,7 @@ title.addEventListener( "focusout", () => {
 } );
 title.addEventListener( "focusin", () => {
 	titleErr.style.display = "none";
-} );
+} ); // For title
 
 auth.addEventListener( "focusout", () => {
 	if ( auth.value.trim() === "" ) {
@@ -102,7 +102,7 @@ auth.addEventListener( "focusout", () => {
 } );
 auth.addEventListener( "focusin", () => {
 	authErr.style.display = "none";
-} );
+} ); // For author
 
 pages.addEventListener( "focusout", () => {
 	if ( !(/^[1-9][0-9]*$/).test( pages.value.trim() ) ) {
@@ -111,7 +111,7 @@ pages.addEventListener( "focusout", () => {
 } );
 pages.addEventListener( "focusin", () => {
 	pagErr.style.display = "none";
-} );
+} ); // For pages
 
 // Cancel and reset button functionality
 
@@ -127,15 +127,142 @@ reset.addEventListener( "click", () => {
 	} );
 } );
 
+// The information on books
+
+const bookArray = [];
+
+function Book( title, auth, pages, read ) {
+	this.title = title;
+	this.author = auth;
+	this.pages = pages;
+	this.read = read;
+}
+
 // Add button functionality
 
 const add = document.querySelector( ".add" );
+const warning = document.querySelector( ".warn" );
 add.addEventListener( "click", () => {
 	if (
 		( title.value.trim() !== "" ) &&
 		( auth.value.trim() !== "" ) &&
 		( (/^[1-9][0-9]*$/).test( pages.value.trim() ) )
 	) {
-		console.log("works");
+
+		if ( read.checked ) {
+			addBook(
+				title.value.trim(),
+				auth.value.trim(),
+				Number( pages.value.trim() ),
+				true
+			);
+		} else {
+			addBook(
+				title.value.trim(),
+				auth.value.trim(),
+				Number( pages.value.trim() ),
+				false
+			);
+		}
+
+		cancelBtn.click();
+		reset.click();
+
+	} else {
+
+		let focusout = new Event( "focusout" );
+
+		title.dispatchEvent( focusout );
+		auth.dispatchEvent( focusout );
+		pages.dispatchEvent( focusout );
+
 	}
 } );
+
+function addBook( title, auth, pages, read ) {
+
+	const newBook = new Book( title, auth, pages, read );
+	bookArray.push( newBook );
+
+	// Creating elements for the sidebar
+	const sidebar = document.createElement( "div" );
+	const iconHolder = document.createElement( "div" );
+	const borderRight = document.createElement( "div" );
+	const borderLeft = document.createElement( "div" );
+
+	const delDiv = document.createElement( "div" );
+	const delSpan = document.createElement( "span" );
+
+	// Assigning classes for the sidebar elements
+
+	delSpan.classList.add( "material-icons", "md-48" );
+	delSpan.textContent = "delete";
+	delDiv.classList.add( "remove" );
+	delDiv.appendChild( delSpan );
+
+	sidebar.classList.add( "bar" );
+	iconHolder.classList.add( "buttons" );
+	iconHolder.append( delDiv );
+
+	borderRight.classList.add( "border-right" );
+	borderLeft.classList.add( "border-left" );
+	sidebar.append( iconHolder, borderRight, borderLeft );
+
+	// Creating elements for the information on the book details
+	const content = document.createElement( "div" );
+	const bookHolder = document.createElement( "div" );
+	const pageSlot = document.createElement( "div" );
+	const readButt = document.createElement( "button" );
+
+	const titleArea = document.createElement( "div" );
+	const authArea = document.createElement( "div" );
+
+	// Adding classes and appending the input details
+	titleArea.classList.add( "title" );
+	authArea.classList.add( "author" );
+	titleArea.textContent = title;
+	authArea.textContent = auth;
+
+	bookHolder.classList.add( "book" );
+	bookHolder.append( titleArea, authArea );
+	pageSlot.classList.add( "paging" );
+	pageSlot.innerHTML = `Pages: <span class="pages">${pages}</span>`
+
+	readButt.classList.add( "read" );
+	content.classList.add( "content" );
+	content.append( bookHolder, pageSlot, readButt );
+
+	if ( read ) {
+		readButt.textContent = "Read";
+		readButt.style.backgroundColor = "#0f0";
+	} else {
+		readButt.textContent = "Not Read";
+		readButt.style.backgroundColor = "#f00"; 
+	}
+
+	// Adds an event listener to the read button
+	readButt.addEventListener( "click", e => {
+		const target = e.currentTarget;
+		if ( /Not/.test( target.textContent ) ) {
+			target.textContent = "Read";
+			target.style.backgroundColor = "#0f0";
+		} else {
+			target.textContent = "Not Read";
+			target.style.backgroundColor = "#f00"; 
+		}
+	} );
+
+	// Adds event listeners to the edit and delete buttons
+	delSpan.addEventListener( "click", e => {} );
+
+	// Finally appending the elements to the main page
+	const card = document.createElement( "div" );
+	card.classList.add( "card" );
+	card.append( sidebar, content );
+	const main = document.querySelector( "main" );
+	main.appendChild( card );
+}
+
+function updateCard() {
+	
+}
