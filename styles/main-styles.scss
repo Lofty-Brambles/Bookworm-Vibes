@@ -35,9 +35,14 @@
 	background-image: url(./../assets/background.webp);
 	background-size: cover;
 	@include add.flex( column, space-between );
+	height: 100vh;
 	width: add.$vw;
 	min-width: 380px;
 	
+	& .filler {
+		flex-grow: 1;
+	}
+
 	@media ( width: 380px ) {
 		overflow-x: scroll;
 	}
@@ -311,8 +316,9 @@ header {
 }
 
 main {
+	
 	box-sizing: border-box;
-	padding: 4rem;
+	padding: 1.5rem;
 	width: add.$vw;
 	display: grid;
 	grid-template-columns: repeat( auto-fit, minmax(240px, 20vw) );

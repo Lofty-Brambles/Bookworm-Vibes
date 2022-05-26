@@ -129,7 +129,7 @@ reset.addEventListener( "click", () => {
 
 // The information on books
 
-const bookArray = [];
+let bookArray = [];
 
 function Book( title, auth, pages, read ) {
 	this.title = title;
@@ -178,11 +178,14 @@ add.addEventListener( "click", () => {
 
 	}
 } );
+window.onload =
+	addBook( "Enclave", "Ann Aguirre", 387, true );
 
 function addBook( title, auth, pages, read ) {
 
 	const newBook = new Book( title, auth, pages, read );
 	bookArray.push( newBook );
+	updateCard();
 
 	// Creating elements for the sidebar
 	const sidebar = document.createElement( "div" );
@@ -198,6 +201,7 @@ function addBook( title, auth, pages, read ) {
 	delSpan.classList.add( "material-icons", "md-48" );
 	delSpan.textContent = "delete";
 	delDiv.classList.add( "remove" );
+	delDiv.dataset.id = bookArray.length - 1;
 	delDiv.appendChild( delSpan );
 
 	sidebar.classList.add( "bar" );
@@ -229,6 +233,7 @@ function addBook( title, auth, pages, read ) {
 	pageSlot.innerHTML = `Pages: <span class="pages">${pages}</span>`
 
 	readButt.classList.add( "read" );
+	readButt.dataset.id = bookArray.length - 1;
 	content.classList.add( "content" );
 	content.append( bookHolder, pageSlot, readButt );
 
@@ -243,6 +248,9 @@ function addBook( title, auth, pages, read ) {
 	// Adds an event listener to the read button
 	readButt.addEventListener( "click", e => {
 		const target = e.currentTarget;
+		const val = !bookArray[ Number( target.dataset.id ) ].read;
+		bookArray[ Number( target.dataset.id ) ].read = val;
+		updateCard();
 		if ( /Not/.test( target.textContent ) ) {
 			target.textContent = "Read";
 			target.style.backgroundColor = "#0f0";
@@ -252,8 +260,25 @@ function addBook( title, auth, pages, read ) {
 		}
 	} );
 
-	// Adds event listeners to the edit and delete buttons
-	delSpan.addEventListener( "click", e => {} );
+	// Adds event listeners to the delete buttons
+	delDiv.addEventListener( "click", e => {
+		const targetID = Number( e.currentTarget.dataset.id );
+		bookArray.splice( targetID, 1 );
+		updateCard();
+		const cardArray = document.querySelectorAll( ".card" );
+		let counter = 0;
+		cardArray.forEach( card => {
+			if ( counter === targetID ) {
+				card.remove();
+			} else if ( counter >= targetID ) {
+				card.childNodes[0].childNodes[0]
+					.childNodes[0].dataset.id = counter - 1;
+				card.childNodes[1].childNodes[2]
+					.dataset.id = counter - 1;
+			}
+			counter++;
+		} );
+	} );
 
 	// Finally appending the elements to the main page
 	const card = document.createElement( "div" );
@@ -263,6 +288,28 @@ function addBook( title, auth, pages, read ) {
 	main.appendChild( card );
 }
 
-function updateCard() {
+function updateCard() { // Updates the count on books
 	
+	const Tbooks = document.querySelector( "#total-books" );
+	const Tauthors = document.querySelector( "#total-authors" );
+	const Tpages = document.querySelector( "#total-pages" );
+	const Tread = document.querySelector( "#total-read" );
+	const Tunread = document.querySelector( "#total-unread" );
+
+	let count = 0, readCount = 0;
+	const authArray = [];
+	bookArray.forEach( book => {
+		count += book.pages;
+		if ( book.read ) readCount++;
+		if ( authArray.indexOf( book.author ) === -1 ) {
+			authArray.push( book.author );
+		}
+	} );
+
+	Tbooks.textContent = bookArray.length;
+	Tauthors.textContent = authArray.length;
+	Tpages.textContent = count;
+	Tread.textContent = readCount;
+	Tunread.textContent = bookArray.length - readCount;
+
 }

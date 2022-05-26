@@ -376,8 +376,12 @@ template {
   flex-flow: column nowrap;
   justify-content: space-between;
   align-items: center;
+  height: 100vh;
   width: calc(100vw - (100vw - 100%));
   min-width: 380px;
+}
+.main .filler {
+  flex-grow: 1;
 }
 @media (width: 380px) {
   .main {
@@ -658,7 +662,7 @@ header {
 
 main {
   box-sizing: border-box;
-  padding: 4rem;
+  padding: 1.5rem;
   width: calc(100vw - (100vw - 100%));
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 20vw));
