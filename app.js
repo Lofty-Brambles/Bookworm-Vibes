@@ -131,11 +131,13 @@ reset.addEventListener( "click", () => {
 
 let bookArray = [];
 
-function Book( title, auth, pages, read ) {
-	this.title = title;
-	this.author = auth;
-	this.pages = pages;
-	this.read = read;
+class Book {
+	constructor( title, auth, pages, read ) {
+		this.title = title;
+		this.author = auth;
+		this.pages = pages;
+		this.read = read;
+	}
 }
 
 // Add button functionality
